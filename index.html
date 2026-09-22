@@ -231,6 +231,11 @@ h1{font-size:clamp(40px,5vw,64px);font-weight:800;letter-spacing:-.05em;line-hei
 .phone.has-shot .status{display:none}
 .screen{position:absolute;inset:0;display:flex;flex-direction:column}
 .screen-body{flex:1;min-height:0;overflow:hidden;position:relative}
+.screen-body.scrollable{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.screen-body.scrollable::-webkit-scrollbar{display:none}
+.screen-body.scrollable .shots{display:block;height:auto;transform:none!important}
+.screen-body.scrollable .shots .pane{min-width:0;height:auto}
+.screen-body.scrollable .shot{height:auto;object-fit:contain}
 .shot{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .shots{display:flex;height:100%;transition:transform .32s cubic-bezier(.22,1,.36,1)}
 .shots .pane{min-width:100%;height:100%}
@@ -529,7 +534,7 @@ const PLAN = {
      note:"Lift first-order CVR. Today ~18% convert from install.",
      items:[
       {code:"INI-13250", title:"Signup flow simplification: phone, location, and notifications in fewer screens", hideCount:true},
-      {code:"INI-13062-g", title:"Wayfinder new users layout: home built for a first session"},
+      {code:"INI-13062-g", title:"Wayfinder new users layout: home built for a first session", scroll:true},
       {code:"INI-13061-g", title:"Explicit personalization: ask, then change the layout"},
       {code:"INI-13079-nu", title:"Global offer pills: show benefits on the first browse"}]}
   ]
@@ -551,6 +556,7 @@ const SEEDED = {
     "growth-q4-assets/screens/INI-10023-3.png"
   ],
   "INI-13316": ["growth-q4-assets/screens/INI-13316.png"],
+  "INI-13062-g": ["growth-q4-assets/screens/INI-13062-g.jpg"],
   "INI-13061-g": [
     "growth-q4-assets/screens/INI-13061-g-1.png",
     "growth-q4-assets/screens/INI-13061-g-2.png",
@@ -753,6 +759,7 @@ function paintPhone(){
   const body = document.getElementById("screenBody");
   const item = findItem(state.selected);
   const shots = item ? shotsFor(item.code) : [];
+  body.classList.toggle("scrollable",!!item?.scroll);
 
   if(!item){
     dock.hidden = true;
