@@ -81,7 +81,7 @@ img{display:block;max-width:100%}
 .hero-num span{display:block;margin-top:6px;font-size:14px;font-weight:500;color:#c9cde8}
 .hero-foot{margin-top:36px;font-size:13px;color:#9aa1c8;font-weight:500;position:relative}
 .targets-hero{min-height:auto;padding:54px 50px 44px}
-.targets-hero .hero-nums{margin-top:0;max-width:none}
+.targets-hero .hero-nums{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:0;max-width:none}
 .pacing{position:relative;z-index:1;margin-top:38px;padding-top:28px;border-top:1px solid #ffffff24}
 .pacing-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:16px}
 .pacing-head h3{font-size:22px;letter-spacing:-.03em}
@@ -99,10 +99,8 @@ img{display:block;max-width:100%}
 .pacing-label small{margin-top:3px;font-size:10px;color:#9299bd}
 .pacing-value{padding:12px;border:1px solid #ffffff16;border-radius:14px;background:#ffffff0a;text-align:center}
 .pacing-value b{display:block;font-size:17px;letter-spacing:-.02em}
-.pacing-value small{display:block;margin-top:4px;font-size:9px;color:#9299bd}
 .pacing-value.plan{background:#ffffff10;border-color:#ffffff24}
 .pacing-value.dec{background:#f4b24d;color:#111;border-color:#f4b24d}
-.pacing-value.dec small{color:#68430a}
 .walk-section{max-width:1280px;margin:0 auto;padding:34px 40px 18px}
 .walk-section h2{font-size:32px;font-weight:800;letter-spacing:-.04em}
 .walk-card{margin-top:18px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff}
@@ -278,6 +276,7 @@ h1{font-size:clamp(40px,5vw,64px);font-weight:800;letter-spacing:-.05em;line-hei
   .subtabs{padding:20px 18px 0}
   .hero{padding:48px 22px 40px;min-height:auto}
   .hero-nums{grid-template-columns:1fr;gap:18px;margin-top:36px}
+  .targets-hero .hero-nums{grid-template-columns:1fr}
   .impact-stats{grid-template-columns:1fr}
   .block-impact-stats{grid-template-columns:1fr}
   .kpi-row{grid-template-columns:minmax(0,1fr) 78px minmax(80px,110px);padding-inline:14px}
@@ -319,9 +318,8 @@ h1{font-size:clamp(40px,5vw,64px);font-weight:800;letter-spacing:-.05em;line-hei
       <div id="targetsView">
         <section class="hero targets-hero">
           <div class="hero-nums">
-            <div class="hero-num"><b>$558.4M</b><span>Retention GMV target</span></div>
-            <div class="hero-num"><b>$125.4M</b><span>Reactivation GMV target</span></div>
-            <div class="hero-num"><b>$25.3M</b><span>New Users GMV target</span></div>
+            <div class="hero-num"><b>25.75M</b><span>Orders · Dec-26 target</span></div>
+            <div class="hero-num"><b>$551.9M</b><span>GMV · Dec-26 target</span></div>
           </div>
           <div class="pacing">
             <div class="pacing-head">
@@ -341,18 +339,18 @@ h1{font-size:clamp(40px,5vw,64px);font-weight:800;letter-spacing:-.05em;line-hei
                 <div class="pacing-month"><span>Plan</span><b>Dec 2026</b></div>
 
                 <div class="pacing-label"><b>Orders</b><small>Total Marketplace</small></div>
-                <div class="pacing-value"><b>23.96M</b><small>23,957,186</small></div>
-                <div class="pacing-value"><b>23.54M</b><small>23,537,370</small></div>
-                <div class="pacing-value plan"><b>24.72M</b><small>24,721,710</small></div>
-                <div class="pacing-value plan"><b>25.69M</b><small>25,693,884</small></div>
-                <div class="pacing-value plan dec"><b>25.75M</b><small>25,753,637</small></div>
+                <div class="pacing-value"><b>23.96M</b></div>
+                <div class="pacing-value"><b>23.54M</b></div>
+                <div class="pacing-value plan"><b>24.72M</b></div>
+                <div class="pacing-value plan"><b>25.69M</b></div>
+                <div class="pacing-value plan dec"><b>25.75M</b></div>
 
                 <div class="pacing-label"><b>GMV</b><small>Total Marketplace</small></div>
-                <div class="pacing-value"><b>$520.2M</b><small>$520,171,972</small></div>
-                <div class="pacing-value"><b>$467.2M</b><small>$467,193,364</small></div>
-                <div class="pacing-value plan"><b>$507.7M</b><small>$507,743,635</small></div>
-                <div class="pacing-value plan"><b>$534.5M</b><small>$534,507,859</small></div>
-                <div class="pacing-value plan dec"><b>$551.9M</b><small>$551,918,185</small></div>
+                <div class="pacing-value"><b>$520.2M</b></div>
+                <div class="pacing-value"><b>$467.2M</b></div>
+                <div class="pacing-value plan"><b>$507.7M</b></div>
+                <div class="pacing-value plan"><b>$534.5M</b></div>
+                <div class="pacing-value plan dec"><b>$551.9M</b></div>
               </div>
             </div>
           </div>
@@ -410,7 +408,7 @@ h1{font-size:clamp(40px,5vw,64px);font-weight:800;letter-spacing:-.05em;line-hei
 <script>
 const METRIC_GROUPS = [
   {id:"main", label:"Main metrics", items:["MAUs","Order Rate","CPID","Order loss"]},
-  {id:"input", label:"Inputs", items:["Campaign conversion","First order conversion","PTC-OP %","Tier 1 MAUs","Pro Adoption"]},
+  {id:"input", label:"Inputs", items:["First order conversion","PTC-OP %","Tier 1 MAUs","Pro Adoption","Campaign conversion"]},
   {id:"guardrail", label:"Guardrails", items:["Promos contact rate","First contact rate"]}
 ];
 
