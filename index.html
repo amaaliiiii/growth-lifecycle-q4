@@ -106,7 +106,7 @@ img{display:block;max-width:100%}
 .walk-section{max-width:1280px;margin:0 auto;padding:34px 40px 18px}
 .walk-section h2{font-size:32px;font-weight:800;letter-spacing:-.04em}
 .walk-card{margin-top:18px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff}
-.walk-card img{width:100%;height:auto;object-fit:contain}
+.walk-frame{display:block;width:100%;height:720px;border:0;background:#fff}
 
 .kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--growth);font-weight:700}
 h1{font-size:clamp(40px,5vw,64px);font-weight:800;letter-spacing:-.05em;line-height:.95;margin:8px 0 0}
@@ -357,6 +357,13 @@ h1{font-size:clamp(40px,5vw,64px);font-weight:800;letter-spacing:-.05em;line-hei
             </div>
           </div>
           <p class="hero-foot">Dec-27 · pct Walk.xlsx</p>
+        </section>
+        <section class="walk-section">
+          <h2>Walk</h2>
+          <div class="walk-card">
+            <iframe class="walk-frame" id="walkFrame" src="growth-q4-assets/walk_gmv_ago_dic_2026.html"
+              title="Global GMV Walk from August to December 2026" loading="lazy"></iframe>
+          </div>
         </section>
       </div>
 
@@ -891,6 +898,22 @@ paintViewTabs();
 paintPillars();
 paintPhone();
 setView("targets", false);
+const walkFrame=document.getElementById("walkFrame");
+walkFrame.addEventListener("load",()=>{
+  const doc=walkFrame.contentDocument;
+  if(!doc) return;
+  const svg=doc.querySelector("svg");
+  if(svg){
+    svg.style.display="block";
+    svg.style.width="100%";
+    svg.style.height="auto";
+  }
+  doc.body.style.margin="0";
+  doc.body.style.padding="24px";
+  const fitFrame=()=>{walkFrame.style.height=doc.documentElement.scrollHeight+"px"};
+  requestAnimationFrame(fitFrame);
+  setTimeout(fitFrame,120);
+});
 </script>
 <script>
 (()=>{
