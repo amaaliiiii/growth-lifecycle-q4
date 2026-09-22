@@ -479,7 +479,8 @@ const PLAN = {
     {code:"GROW-DEMAND", title:"Reduce order loss",
      note:"Stop creating demand in zones that cannot deliver.",
      items:[
-      {code:"INI-12042", title:"Market balancing: turn off global offers when supply is saturated", screens:false}]},
+      {code:"INI-12042", title:"Market balancing: turn off global offers when supply is saturated", screens:false},
+      {code:"GROW-DEMAND-T3", title:"Market Balancing: Reduce exposure of campaigns to tier 3 users in long distance", screens:false, hideCode:true}]},
     {code:"GROW-HYGIENE", title:"Growth OPEX",
      note:"Less manual work every time a campaign goes live.",
      items:[
@@ -730,7 +731,7 @@ function paintBlocks(){
       if(!interactive) btn.classList.add("no-screen");
       btn.dataset.code = it.code;
       btn.innerHTML = `<div>
-        <div class="code">${esc(it.code)}</div>
+        ${it.hideCode?"":`<div class="code">${esc(it.code)}</div>`}
         <div class="title">${esc(it.title)}</div>
         ${n&&!it.hideCount?`<div class="meta">${n+" pantalla"+(n>1?"s":"")}</div>`:""}
       </div>${interactive?`<div class="go">›</div>`:it.disclaimer?`<div class="type">${esc(it.disclaimer)}</div>`:block.screens===false?`<div class="type">Tooling</div>`:""}`;
