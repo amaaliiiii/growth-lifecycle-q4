@@ -535,7 +535,12 @@ const PLAN = {
       {code:"INI-0026-g", title:"Bigger slots: more windows so the promise holds"},
       {code:"INI-0027-g", title:"No Rush for Restaurants Pro", screens:false},
       {code:"INI-0028-g", title:"No Rush for Turbo", screens:false},
-      {code:"INI-0029-g", title:"No Rush / No Pro: global offer config", screens:false}]}
+      {code:"INI-0029-g", title:"No Rush / No Pro: global offer config", screens:false}]},
+    {code:"GROW-PRI-FOUNDATIONS", title:"Pricing foundations",
+     note:"Scope segmentation foundations for 2027.",
+     screens:false,
+     items:[
+      {code:"INI-PRI-2027", title:"Pricing infra / segmentation scoping", hideCode:true, status:"2027"}]}
   ],
   newusers:[
     {code:"GROW-NU", title:"Get the first order",
@@ -746,7 +751,7 @@ function paintBlocks(){
         ${it.hideCode?"":`<div class="code">${esc(it.code)}</div>`}
         <div class="title">${esc(it.title)}</div>
         ${n&&!it.hideCount?`<div class="meta">${n+" pantalla"+(n>1?"s":"")}</div>`:""}
-      </div>${interactive?`<div class="go">›</div>`:it.disclaimer?`<div class="type">${esc(it.disclaimer)}</div>`:block.screens===false?`<div class="type">Tooling</div>`:""}`;
+      </div>${interactive?`<div class="go">›</div>`:it.status?`<div class="type">${esc(it.status)}</div>`:it.disclaimer?`<div class="type">${esc(it.disclaimer)}</div>`:block.screens===false?`<div class="type">Tooling</div>`:""}`;
       if(interactive) btn.addEventListener("click", ()=>select(it.code));
       list.appendChild(btn);
     });
